@@ -1,0 +1,38 @@
+# This file is part of PythonFO: voice control for Microsoft Flight Simulator written entirely in Python
+# Copyright (C) 2025  Vilgot Szasz Kero
+# PythonFO comes with ABSOLUTELY NO WARRANTY; for details see COPYRIGHT.txt
+
+
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "PythonFO"
+description = "Voice control for Microsoft Flight Simulator written entirely in Python"
+keywords = ["Microsoft Flight Simulator", "MSFS"]
+version = "0.1.0"
+
+readme = "README.md"
+license = "GPL-3.0-or-later"
+
+authors = [
+    {name = "Vilgot Szasz Kero"}
+]
+
+dependencies = [
+    "keyboard",
+    "pyaudio",
+    "SpeechRecognition",
+    "pysimconnect"
+]
+
+classifiers = [
+    "Programming Language :: Python",
+    "Development Status :: 3 - Alpha"
+]
+
+
+[project.urls]
+Repository = "https://github.com/ViSzKe/PythonFO"
