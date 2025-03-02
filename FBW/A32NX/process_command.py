@@ -3,6 +3,10 @@
 # PythonFO comes with ABSOLUTELY NO WARRANTY; for details see COPYRIGHT.txt
 
 
+import sys
+import os
+sys.path.insert(1, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+
 from utils import debug
 import sc_functions
 import re
@@ -18,7 +22,7 @@ def process_command(command):
         process_flaps(command)
         
 
-    elif re.match(r"^heading \d{3}$", command):
+    elif "heading" in command and len(command.split()) == 2:
         if debug:
             print ("DEBUG: process_command.process_command: recognized heading command")
         process_heading(command)
@@ -57,12 +61,20 @@ def process_flaps(command):
 
 
 def process_heading(command):
-    if int(command.split()[1]) < 360:
-        heading_int = int(command.split()[1])
-        if debug:
-            print("DEBUG: process_command.process_heading.heading_int == " + str(heading_int))
-        sc_functions.heading(heading_int)
-    else:
+    heading_str = command.split()[1]
+    if debug:    
+        print("DEBUG: process_command.process_heading.heading_str == " + str(heading_str))
+
+    try:
+        heading_int = int(heading_str)
+        if heading_int < 360:
+            heading_int = f"{heading_int:03d}"
+            if debug:
+                print("DEBUG: process_command.process_heading.heading_int == " + str(heading_int))
+            sc_functions.heading(heading_int)
+        else:
+            print("Invalid heading value.")
+    except ValueError:
         print("Invalid heading value.")
 
 
@@ -72,7 +84,7 @@ def process_frequency(command):
     frequency_str = str(frequency_str).split()[1]
     frequency_int = int(frequency_str)
 
-    if 118 <= frequency_int <= 136990:
+    if 118 <= frequency_int <= 136990 and len(frequency_str) <= 6:
         if debug:
             print("DEBUG: process_command.process_frequency.frequency_str == " + str(frequency_str))
             print("DEBUG: process_command.process_frequency.frequency_int == " + str(frequency_int))
