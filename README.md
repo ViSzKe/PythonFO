@@ -1,4 +1,4 @@
-# PythonFO v0.2.0-alpha
+# PythonFO v0.3.0-alpha
 
 **Copyright (C) 2025  Vilgot Szasz Kero
 PythonFO comes with ABSOLUTELY NO WARRANTY; for details see COPYRIGHT.txt**
@@ -11,7 +11,7 @@ PythonFO comes with ABSOLUTELY NO WARRANTY; for details see COPYRIGHT.txt**
 
 This is a free, open-source virtual first officer for Microsoft Flight Simulator written entirely in Python. It uses SpeechRecognition (select API in utils.py) to transcribe commands, and pysimconnect to send data to the simulator.
 
-*This is a personal project*, so it is obviously very limited compared to paid services. You also need to manually install the required packages (pip install requirements.txt) and run the script with your local Python.
+*This is a personal project*, so it is obviously very limited compared to paid services. You also need to manually install the required packages (`pip install -r requirements.txt`) and run the script with your local Python.
 
 ## Requirements:
 
@@ -27,8 +27,9 @@ This is a free, open-source virtual first officer for Microsoft Flight Simulator
 
 ## Usage
 
-1. Run `PythonFO.py`
-2. Press `shift` (no need to hold it down) and say your command (see **list of commands** below)
+1. Set your preferences in `utils.py`
+2. Run `PythonFO.py`
+3. Press `shift` (no need to hold it down) and say your command (see **list of commands** below)
 
 ## List of commands
 

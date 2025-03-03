@@ -1,4 +1,4 @@
-# This file is part of PythonFO: voice control for Microsoft Flight Simulator written entirely in Python
+# This file is part of PythonFO: Free virtual first officer for Microsoft Flight Simulator written entirely in Python
 # Copyright (C) 2025  Vilgot Szasz Kero
 # PythonFO comes with ABSOLUTELY NO WARRANTY; for details see COPYRIGHT.txt
 
@@ -10,9 +10,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "PythonFO"
-description = "Voice control for Microsoft Flight Simulator written entirely in Python"
-keywords = ["Microsoft Flight Simulator", "MSFS"]
-version = "0.2.0"
+description = "Free virtual first officer for Microsoft Flight Simulator written entirely in Python"
+keywords = ["Microsoft Flight Simulator", "MSFS", "voice control"]
+version = "0.3.0"
 
 readme = "README.md"
 license = "GPL-3.0-or-later"
