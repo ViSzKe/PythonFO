@@ -1,6 +1,4 @@
 keyboard
 pyaudio
 SpeechRecognition
-git+https://github.com/openai/whisper.git
-soundfile
 pysimconnect

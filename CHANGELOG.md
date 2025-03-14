@@ -1,8 +1,13 @@
-# New features in 0.3.0
-* You can now set a default command in utils.py. If no prefix is added when you say your command, the program will interpret it as the default command. This is useful for commands that you use frequently.
+# New features in 0.3.1
+* Whisper's requirements are now separated from the main requirements, so you can install them only if you want to use Whisper.
 
-# Technical changes in 0.3.0
-* process_command() now removes the specific prefix (flaps/heading/frequency) before sending it to the appropriate processing function. This should increase reliability and enable for more complex processing functions.
+# Bug fixes in 0.3.1
+* Frequency commands did not work if "decimal" was in the command.
 
-# Licensing changes in 0.3.0
-* PythonFO description changed from: "voice control for Microsoft Flight Simulator written entirely in Python" to "Free virtual first officer for Microsoft Flight Simulator written entirely in Python"
+# Other changes in 0.3.1
+* Zero padding for headings is now removed, because different users might want to add zeroes before or after the commanded numbers.
+* The default ptt key is now `alt`.
+* Every aircraft now as its own `list_of_commands.md` in its folder.
+
+# Technical changes in 0.3.1
+* `listen_for_commands.py` is now separated from the aircraft-specific code, because the same speech recognition code can be used regardless of aircraft. This should make it easier to add more supported aircraft.

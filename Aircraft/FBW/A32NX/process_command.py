@@ -5,7 +5,7 @@
 
 import sys
 import os
-sys.path.insert(1, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")))
 
 import utils
 import sc_functions
@@ -71,8 +71,7 @@ def process_flaps(command_value):
 def process_heading(command_value):
     try:
         heading_int = int(command_value)
-        if heading_int < 360:
-            heading_int = f"{heading_int:03d}"
+        if heading_int < 360 and len(command_value) == 3:
             if utils.debug:
                 print("DEBUG: process_command.process_heading.heading_int == " + str(heading_int))
             sc_functions.heading(heading_int)
@@ -85,6 +84,8 @@ def process_heading(command_value):
 def process_frequency(command_value):
     frequency_str = str(command_value).replace("decimal", "").strip()
     frequency_str = str(frequency_str).replace(".", "").strip()
+    frequency_str = str(frequency_str).replace(",", "").strip()
+    frequency_str = str(frequency_str).replace(" ", "").strip()
     frequency_int = int(frequency_str)
 
     if 118 <= frequency_int <= 136990 and len(frequency_str) <= 6:

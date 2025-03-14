@@ -5,18 +5,25 @@
 
 import sys
 import os
-sys.path.insert(1, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../code")))
 
 from utils import debug, ptt_key
 import keyboard
 from listen_for_command import listen_for_command
+from process_command import process_command
 from time import sleep
 
 def main():
     print("Press " + ptt_key + " to talk.")
     while True:
         if keyboard.is_pressed(ptt_key):
-            listen_for_command()
+            command = listen_for_command()
+            if command == "error":
+                continue
+            else:
+                process_command(command)
+
         sleep(0.1)
 
 def license_notice():
