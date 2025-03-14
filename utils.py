@@ -4,12 +4,12 @@
 
 
 # General settings
-ptt_key = "shift"
+ptt_key = "alt"
 enable_default_command = False # If True, the default command will be executed if no command prefix is recognized
 default_command = "frequency"
 
 # Speech recognition settings
-recognizer_api = "google" # google: fast and light but less accurate, whisper: slow and heavy but more accurate
+recognizer_api = "google" # see "Supported speech recognition APIs" in "README.md"
 whisper_model = "turbo"
 
 # Developer mode

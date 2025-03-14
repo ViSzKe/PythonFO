@@ -5,7 +5,7 @@
 
 import sys
 import os
-sys.path.insert(1, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from utils import recognizer_api
 if recognizer_api == "whisper":
@@ -17,8 +17,6 @@ import speech_recognition as sr
 recognizer = sr.Recognizer()
 mic = sr.Microphone()
 
-from process_command import process_command
-
 
 def listen_for_command():
     with mic as source:
@@ -27,15 +25,15 @@ def listen_for_command():
         audio = recognizer.listen(source)
 
     try:
-        if recognizer_api == "whisper":
+        if recognizer_api == "google":
             print("Recognizing...")
-            command = recognizer.recognize_whisper(audio, model=whisper_model)
+            command = recognizer.recognize_google(audio)
             if command is None:
                 raise ValueError("Recognzer returned None")
 
-        elif recognizer_api == "google":
+        elif recognizer_api == "whisper":
             print("Recognizing...")
-            command = recognizer.recognize_google(audio)
+            command = recognizer.recognize_whisper(audio, model=whisper_model)
             if command is None:
                 raise ValueError("Recognzer returned None")
 
@@ -55,9 +53,11 @@ def listen_for_command():
             command = command.replace("/", "")
         
         print(f"Recognized: {command}")
-        process_command(command)
+        return command
     
     except sr.UnknownValueError:
         print("Could not understand the command.")
+        return "error"
     except sr.RequestError:
         print("Could not request results.")
+        return "error"
