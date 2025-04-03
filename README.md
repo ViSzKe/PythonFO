@@ -1,11 +1,7 @@
-# PythonFO v0.3.1-alpha
+# PythonFO v0.0.0
 
 **Copyright (C) 2025  Vilgot Szasz Kero
 PythonFO comes with ABSOLUTELY NO WARRANTY; for details see COPYRIGHT.txt**
-
-## Development status
-
-**Alpha**
 
 ## Introduction
 
