@@ -5,12 +5,15 @@
 
 # General settings
 ptt_key = "alt"
-enable_default_command = False # If True, the default command will be executed if no command prefix is recognized
+enable_default_command = False # if True, the default command will be executed if no command prefix is recognized
 default_command = "frequency"
 
 # Speech recognition settings
 recognizer_api = "google" # see "Supported speech recognition APIs" in "README.md"
 whisper_model = "turbo"
 
-# Developer mode
+# Demo mode (doesn't load SimConnect)
+demo = False
+
+# Developer mode (debug logs in console)
 debug = True
