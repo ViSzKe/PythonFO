@@ -3,7 +3,7 @@
 # PythonFO comes with ABSOLUTELY NO WARRANTY; for details see COPYRIGHT.txt
 
 
-version = "v0.3.2" # version
+version = "v0.0.0" # version
 
 def license_notice():
     print("PythonFO " + version + "  Copyright (C) 2025  Vilgot Szasz Kero")
