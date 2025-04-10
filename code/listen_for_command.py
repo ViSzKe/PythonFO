@@ -20,9 +20,13 @@ mic = sr.Microphone()
 
 def listen_for_command():
     with mic as source:
-        print("Listening...")
-        #recognizer.adjust_for_ambient_noise(source)
-        audio = recognizer.listen(source)
+        try:
+            print("Listening...")
+            #recognizer.adjust_for_ambient_noise(source)
+            audio = recognizer.listen(source, timeout=10)
+        except sr.WaitTimeoutError:
+            print("Couldn't hear anything")
+            return "error"
 
     try:
         if recognizer_api == "google":
