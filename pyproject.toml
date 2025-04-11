@@ -12,7 +12,7 @@ build-backend = "setuptools.build_meta"
 name = "PythonFO"
 description = "Free virtual first officer for Microsoft Flight Simulator written entirely in Python"
 keywords = ["Microsoft Flight Simulator", "MSFS", "voice control"]
-version = "0.0.0"
+version = "0.4.0"
 
 readme = "README.md"
 license = "GPL-3.0-or-later"
@@ -37,6 +37,7 @@ vosk = [
 
 classifiers = [
     "Programming Language :: Python",
+    "Development Status :: 3 - Alpha"
 ]
 
 
