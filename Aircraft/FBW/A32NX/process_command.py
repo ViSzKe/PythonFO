@@ -26,7 +26,7 @@ def process_command(command):
         process_flaps(command_value)
         
 
-    elif ("heading" in command and len(command.split()) == 2) or (utils.enable_default_command and utils.default_command == "heading" and len(command.split()) == 1 and re.match(r"^\d", command)):
+    elif ("heading" in command and len(command.split()) >1) or (utils.enable_default_command and utils.default_command == "heading" and re.match(r"^\d", command)):
         if utils.debug:
             print ("DEBUG: process_command.process_command: recognized heading command")
         command_value = command.replace("heading", "").strip()
@@ -46,6 +46,7 @@ def process_command(command):
     
     else:
         print("Command not recognized.")
+        return
 
 
 def process_flaps(command_value):
@@ -69,6 +70,7 @@ def process_flaps(command_value):
 
 
 def process_heading(command_value):
+    command_value = command_value.replace(" ", "")
     try:
         heading_int = int(command_value)
         if heading_int < 360 and len(command_value) == 3:
@@ -82,11 +84,17 @@ def process_heading(command_value):
 
 
 def process_frequency(command_value):
-    frequency_str = str(command_value).replace("decimal", "").strip()
-    frequency_str = str(frequency_str).replace(".", "").strip()
-    frequency_str = str(frequency_str).replace(",", "").strip()
-    frequency_str = str(frequency_str).replace(" ", "").strip()
-    frequency_int = int(frequency_str)
+    try:
+        frequency_str = str(command_value).replace("decimal", "").strip()
+        frequency_str = str(frequency_str).replace(".", "").strip()
+        frequency_str = str(frequency_str).replace(",", "").strip()
+        frequency_str = str(frequency_str).replace(" ", "").strip()
+        frequency_int = int(frequency_str)
+    except ValueError as e:
+        if utils.debug:
+            print("DEBUG: process_command.process_frequency: ValueError: " + str(e))
+        print("Command not recognized.")
+        return
 
     if 118 <= frequency_int <= 136990 and len(frequency_str) <= 6:
         if utils.debug:

@@ -35,6 +35,9 @@ def flaps(flaps):
 
 
 def heading(heading):
+    if " " in str(heading):
+        heading = int(str(heading.replace(" ", "")))
+
     if demo:
         print("DEMO: command sent: HEADING " + str(heading))
     

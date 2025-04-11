@@ -10,7 +10,7 @@ default_command = "frequency"
 
 # Speech recognition settings
 recognizer_api = "google" # see "Supported speech recognition APIs" in "README.md"
-whisper_model = "turbo"
+vosk_model = "None" # see "Using vosk" in "README.md"
 
 # Demo mode (doesn't load SimConnect)
 demo = False

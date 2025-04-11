@@ -30,9 +30,8 @@ dependencies = [
 
 
 [project.optional-dependencies]
-whisper = [
-    "git+https://github.com/openai/whisper.git",
-    "soundfile"
+vosk = [
+    "vosk"
     ]
 
 

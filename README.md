@@ -22,11 +22,17 @@ This is a free, open-source virtual first officer for Microsoft Flight Simulator
 * FlyByWire A32NX
 
 ## Supported speech recognition APIs:
-* `google`: fast and light but less accurate, no additional requirements
-* `whisper`: very slow and heavy but more accurate, requires `requirements_whisper.txt`
+* `google`: fast and light
+* `vosk`: heavier but might be more accurate, see **Using vosk** below
 
 ## Usage
 
 1. Set your preferences in `utils.py`
 2. Run `PythonFO.py`
 3. Press the ptt key that you set in `utils.py` (no need to hold it down) and say your command (see `list_of_commands.md` for each aircraft)
+
+## Using vosk
+
+1. `pip install -r requirements_vosk.txt`
+2. Download a model from <https://alphacephei.com/vosk/models>
+3. Put it in project root, and set its name in `utils.py` (for example `vosk-model-en-us-0.22-lgraph`)
