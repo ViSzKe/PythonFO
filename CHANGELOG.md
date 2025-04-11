@@ -1,6 +1,3 @@
-# New features in v0.3.2
-* Demo mode: doesn't load SimConnect
-
-# Technical changes in v0.3.2
-* Move `license_notice()` to separate file
-* Add `CONTRIBUTING.md`
+# New features in v0.4.0
+* vosk replaces whisper
+* Recognizer cancels listening after 10 seconds

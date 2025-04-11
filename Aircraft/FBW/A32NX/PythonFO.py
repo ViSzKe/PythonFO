@@ -22,7 +22,7 @@ def main():
         if keyboard.is_pressed(ptt_key):
             command = listen_for_command()
             if command == "error":
-                continue
+                continue # Error message is printed from where the error occured in listen_for_command()
             else:
                 process_command(command)
 
