@@ -8,39 +8,37 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")))
 
 import utils
+
+import logging
+if utils.debug:
+    logging.basicConfig(level=logging.DEBUG)
+
 import sc_functions
 import re
 
 
 def process_command(command):
-    if utils.debug:
-        print("DEBUG: process_command.process_command.command == " + command)
+    logging.debug("process_command.process_command.command == " + command)
 
     if re.match(r"^(flaps|flap) \w+$", command) or (utils.enable_default_command and utils.default_command == "flaps" and len(command.split()) == 1):
-        if utils.debug:
-            print ("DEBUG: process_command.process_command: recognized flaps command")
+        logging.debug("process_command.process_command: recognized flaps command")
         command_value = command.replace("flaps", "").strip()
         command_value = command_value.replace("flap", "").strip()
-        if utils.debug:
-            print("DEBUG: process_command.process_command: command_value == " + command_value)
+        logging.debug("process_command.process_command: command_value == " + command_value)
         process_flaps(command_value)
         
 
     elif ("heading" in command and len(command.split()) >1) or (utils.enable_default_command and utils.default_command == "heading" and re.match(r"^\d", command)):
-        if utils.debug:
-            print ("DEBUG: process_command.process_command: recognized heading command")
+        logging.debug("process_command.process_command: recognized heading command")
         command_value = command.replace("heading", "").strip()
-        if utils.debug:
-            print("DEBUG: process_command.process_command: command_value == " + command_value)
+        logging.debug("process_command.process_command: command_value == " + command_value)
         process_heading(command_value)
 
 
     elif re.match(r"^frequency\s", command) or (utils.enable_default_command and utils.default_command == "frequency" and re.match(r"^\d", command)):
-        if utils.debug:
-            print("DEBUG: process_command.process_command: recognized frequency command")
+        logging.debug("process_command.process_command: recognized frequency command")
         command_value = command.replace("frequency", "").strip()
-        if utils.debug:
-            print("DEBUG: process_command.process_command: command_value == " + command)
+        logging.debug("process_command.process_command: command_value == " + command)
         process_frequency(command_value)
 
     
@@ -59,8 +57,7 @@ def process_flaps(command_value):
     }
     flaps_int = flaps_dict.get(command_value, None)
 
-    if utils.debug:
-        print("DEBUG: process_command.process_flaps.flaps_int == " + str(flaps_int))
+    logging.debug("process_command.process_flaps.flaps_int == " + str(flaps_int))
 
     if flaps_int is None:
         print("Invalid flaps value.")
@@ -74,8 +71,7 @@ def process_heading(command_value):
     try:
         heading_int = int(command_value)
         if heading_int < 360 and len(command_value) == 3:
-            if utils.debug:
-                print("DEBUG: process_command.process_heading.heading_int == " + str(heading_int))
+            logging.debug("process_command.process_heading.heading_int == " + str(heading_int))
             sc_functions.heading(heading_int)
         else:
             print("Invalid heading value.")
@@ -91,15 +87,13 @@ def process_frequency(command_value):
         frequency_str = str(frequency_str).replace(" ", "").strip()
         frequency_int = int(frequency_str)
     except ValueError as e:
-        if utils.debug:
-            print("DEBUG: process_command.process_frequency: ValueError: " + str(e))
+        logging.debug("process_command.process_frequency: ValueError: " + str(e))
         print("Command not recognized.")
         return
 
     if 118 <= frequency_int <= 136990 and len(frequency_str) <= 6:
-        if utils.debug:
-            print("DEBUG: process_command.process_frequency.frequency_str == " + str(frequency_str))
-            print("DEBUG: process_command.process_frequency.frequency_int == " + str(frequency_int))
+        logging.debug("process_command.process_frequency.frequency_str == " + str(frequency_str))
+        logging.debug("process_command.process_frequency.frequency_int == " + str(frequency_int))
         sc_functions.frequency(frequency_int)
     else:
         print("Invalid frequency value.")
